@@ -82,22 +82,3 @@ a = visboundaries(mask,'Color','b');
 b = visboundaries(bw,'Color','r'); 
 % imshowpair(a,b,'montage')
 hold off;
-%% Gray-scale Image
-pout = imread('ActiveContourTestImages/corona.png');
-pout_imadjust = imadjust(pout);
-pout_histeq = histeq(pout);
-pout_adapthisteq = adapthisteq(pout);
-%% let the user choose an initial curve and close the figure afterwards.
-mask = roipoly(pout_histeq);
-%% to extract the boundary of the object
-bw = activecontour(pout_histeq,mask,200,'edge');
-%% Create a maximized figure and plot the initial and the final curve on the original image.
-figure()
-imshow(pout)
-hold on;
-% a = labeloverlay(I,mask);          
-% b = labeloverlay(I,bw);
-a = visboundaries(mask,'Color','b');           
-b = visboundaries(bw,'Color','r'); 
-% imshowpair(a,b,'montage')
-hold off;
